@@ -3,8 +3,8 @@
      xmlns="http://www.w3.org/2000/svg">
   <style>
     :root {
-      --dark-bg-color: #090930;
-      --light-bg-color: antiquewhite; /* #faebd7 */
+      --dark-bg-color: #050922;
+      --light-bg-color: #faebd7 ; /* #faebd7 #e8e8f8 */
       --wing-color: aquamarine; /* #7fffd4 */
       --rim-color: darkmagenta; /* #8b008b */
       --body-color: ghostwhite; /* #f8f8ff */
@@ -49,8 +49,8 @@
   <path d="M0 0h1000v1000H0V0z" fill="none" />
   <path class="dark-bg" d="M0,0v1000h1000z" />
   <path class="light-bg" d="M1000,1000v-1000h-1000z" />
-  <use xlink:href="#guidelines" color="RED" />
-  <g id="moth" class="">
+  <!-- <use xlink:href="#guidelines" color="RED" /> -->
+  <g id="moth" class="moth">
     <!-- <use xlink:href="#draft" /> -->
     <g id="antennas">
       <g id="left-antenna">
@@ -66,27 +66,7 @@
       <path d="M460,280c10,-40,70,-40,80,0s0,172,-40,172s-50,-132,-40,-172z" fill="currentColor" />
     </g>
     
-    <g id="right-forewing">
-      <path d="M880,235c-64.843,-39.061,-204.773,-48.145,-376.607,46.587c24.047,37.846,94.834,121.444,185.612,153.075c76.202,34.966,117.569,-63.527,132.092,-82.161c14.522,-18.635,123.743,-78.44,58.903,-117.501z" fill-opacity=".3" fill="lime" stroke="limegreen" />
-      <path d="M500,280l377,-47l-59,118l-132,82z" stroke="black" />
-      <path d="M500,280c172,-95,312,-86,377,-47s-45,99,-59,118s-52,115,-132,82s-162,-115,-186,-153z" stroke="black" fill="magenta" fill-opacity=".4" />
-    </g>
-    <g id="left-forewing"></g>
     <g id="right-hindwing">
-      <!-- <path d="M564,280c-8.46,-2.614,-32.798,-5.49,-62.472,3.921l27.332,521.522l23.427,-11.764l11.713,-15.684c-2.603,-10.457,-8.59,-32.154,-11.713,-35.291c-3.905,-3.922,-31.236,-70.582,-17.571,-109.794c1.953,-35.945,20.694,-105.873,80.042,-98.031l48.806,-9.803c14.968,-3.921,44.512,-12.548,42.95,-15.685c0,0,-3.905,-23.527,17.57,-29.409c10.412,-1.307,-7.028,-43.133,-160.084,-199.982z" fill-opacity=".3" fill="lime" stroke="limegreen"  /> -->
-      <path d="M500,280
-               c30,-9,54,-7,62,-4
-               c153,157,181,194,160,200
-               c-21,6,-18,27,-18,29
-               c1,3,-28,12,-43,16
-               l-49,10
-               c-59,-8,-78,62,-80,98
-               c-14,39,13,107,18,110
-               s9,25,12,35
-               l-12,16
-               l-23,12
-               l-27,-52z
-              " fill-opacity=".3" fill="lime" stroke="limegreen" />
       <path d="M500,280
                c30,-9,54,-7,62,-4
                s144,80,165,195
@@ -102,9 +82,19 @@
                c-3,18,-22,48,-18,-52
                s-21,-469,-21,-469
                z
-              " stroke="blue" fill-opacity=".8" />
+              " stroke="darkmagenta" stroke-width="4" stroke-opacity=".8" fill="limegreen" fill-opacity=".4" />
     </g>
-    <g id="left-hindwing"></g>
-    <use xlink:href="#draft" />
+    <g id="left-hindwing">
+      <use xlink:href="#right-hindwing" transform="scale(-1,1) translate(-1000,0)" />
+    </g>
+
+    <g id="right-forewing">
+      <path d="M500,280c172,-95,312,-86,377,-47s-45,99,-59,118s-52,115,-132,82s-162,-115,-186,-153z"
+            stroke="darkmagenta" stroke-width="4" stroke-opacity=".8" fill="limegreen" fill-opacity=".4" />
+    </g>
+    <g id="left-forewing">
+      <use xlink:href="#right-forewing" transform="scale(-1,1) translate(-1000,0)" />
+    </g>
+    <!-- <use xlink:href="#draft" /> -->
   </g>
 </svg>
