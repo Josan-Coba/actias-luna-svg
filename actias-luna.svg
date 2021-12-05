@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1000 1000"
+     height="1000" width="1000"
+     xmlns="http://www.w3.org/2000/svg">
+  <style>
+    :root {
+      --dark-bg-color: #090930;
+      --light-bg-color: antiquewhite; /* #faebd7 */
+      --wing-color: aquamarine; /* #7fffd4 */
+      --rim-color: darkmagenta; /* #8b008b */
+      --body-color: ghostwhite; /* #f8f8ff */
+      --accent-color: gold; /* #ffd700 */
+    }
+    .moth {
+      /* transform="rotate(-45,500,500) translate(0,80)" */
+      transform: rotate(-45deg) translate(0,80px);
+      transform-origin: 50% 50%;
+    }
+    .dark-bg {
+      fill: var(--dark-bg-color);
+    }
+    .light-bg {
+      fill: var(--light-bg-color);
+    }
+    .body {
+      color: var(--body-color);
+    }
+  </style>
+  <defs>
+    <g id="guidelines">
+      <path d="M0,0h1000v1000H0V0z M80,80v840h840V80H80" fill="currentColor" fill-opacity="0.2" />
+      <circle cx="500" cy="500" r="420" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".4" />
+      <rect x="125" y="125" width="750" height="750" rx="80" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/>
+      <line x1="0" y1="0" x2="1000" y2="1000" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
+      <line x1="1000" y1="0" x2="0" y2="1000" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
+      <line x1="500" y1="0" x2="500" y2="1000" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
+      <line x1="0" y1="500" x2="1000" y2="500" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
+    </g>
+  </defs>
+  <path d="M0 0h1000v1000H0V0z" fill="none" />
+  <path class="dark-bg" d="M0,0v1000h1000z" />
+  <path class="light-bg" d="M1000,1000v-1000h-1000z" />
+  <use xlink:href="#guidelines" color="RED" />
+  <g id="moth">
+    <g id="draft" fill-opacity="0.2" stroke-width="1">
+      <path d="M500,200l400,80l-400,560l-400,-560z" stroke="olive" fill="lime" />
+      <path d="M500,280l300,-64l100,64l-170,170z" stroke="magenta" fill="darkmagenta" />
+      <path d="M500,280l64,0l112,192l-40,56l-120,0l-16,120l40,120l-40,40z" stroke="magenta" fill="darkmagenta" />
+      <circle cx="580" cy="472" r="20" stroke="goldenrod" fill="gold" />
+      <ellipse cx="692" cy="296" rx="16" ry="28" stroke="goldenrod" fill="gold" />
+      <path d="M460,260h80v192h-80z" stroke="ghostwhite" fill="black" />
+      <path d="M500,260l24,-72" stroke="goldenrod" fill="gold" stroke-width="4" stroke-opacity=".6" />
+    </g>
+    <g id="body" class="body">
+      <path d="M460,280a60,60,0,0,1,80,0z" fill="currentColor" stroke="black" />
+    </g>
+    <g id="antennas"></g>
+    <g id="left-forewing"></g>
+    <g id="left-hindwing"></g>
+  </g>
+</svg>
