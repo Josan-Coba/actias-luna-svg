@@ -29,6 +29,7 @@
     <g id="guidelines">
       <path d="M0,0h1000v1000H0V0z M80,80v840h840V80H80" fill="currentColor" fill-opacity="0.2" />
       <circle cx="500" cy="500" r="420" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".4" />
+      <circle cx="500" cy="500" r="500" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".4" />
       <rect x="125" y="125" width="750" height="750" rx="80" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".6"/>
       <line x1="0" y1="0" x2="1000" y2="1000" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
       <line x1="1000" y1="0" x2="0" y2="1000" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
@@ -40,20 +41,34 @@
   <path class="dark-bg" d="M0,0v1000h1000z" />
   <path class="light-bg" d="M1000,1000v-1000h-1000z" />
   <use xlink:href="#guidelines" color="RED" />
-  <g id="moth">
-    <g id="draft" fill-opacity="0.2" stroke-width="1">
+  <g id="moth" class="moth">
+    <g id="draft" fill-opacity="0.2" stroke-width="1" >
       <path d="M500,200l400,80l-400,560l-400,-560z" stroke="olive" fill="lime" />
       <path d="M500,280l300,-64l100,64l-170,170z" stroke="magenta" fill="darkmagenta" />
       <path d="M500,280l64,0l112,192l-40,56l-120,0l-16,120l40,120l-40,40z" stroke="magenta" fill="darkmagenta" />
       <circle cx="580" cy="472" r="20" stroke="goldenrod" fill="gold" />
       <ellipse cx="692" cy="296" rx="16" ry="28" stroke="goldenrod" fill="gold" />
-      <path d="M460,260h80v192h-80z" stroke="ghostwhite" fill="black" />
-      <path d="M500,260l24,-72" stroke="goldenrod" fill="gold" stroke-width="4" stroke-opacity=".6" />
+      <!-- <path d="M460,260h80v192h-80z" stroke="ghostwhite" fill="black" /> -->
+      <!-- <path d="M500,260l24,-72" stroke="goldenrod" fill="gold" stroke-width="4" stroke-opacity=".6" /> -->
     </g>
-    <g id="body" class="body">
-      <path d="M460,280a60,60,0,0,1,80,0z" fill="currentColor" stroke="black" />
+    <g id="antennas">
+      <g id="left-antenna">
+        <path d="M500,270q0,-80,-60,-80c20,4,60,6,56,80" fill="black" />
+        <path d="M498,270c6,-80,-10,-86,-60,-80c35,15,28,20,42,30s14,20,18,50" stroke="none" fill="gold" fill-opacity=".6" />
+      </g>
+      <g id="right-antenna">
+        <!-- <path d="M500,280c0,-20,6,-41,20,-57s10,-30,12,-35c1,14,0,22,-10,36s-16,20,-18,56" fill="magenta" /> -->
+        <!-- <path d="M502,280c-6,-60,9,-59,16,-66s7,-6,10,-13s3,-11,4,-13c8,10,3,29,2,32s-8,15,-13,22s-16,11,-19,38z" fill="blue" fill-opacity=".5" /> -->
+        <path d="M500,270c5,-35,7,-40,20,-57s12,-28,12,-35c3,8,0,22,-10,36s-16,20,-18,56" fill="black" />
+        <!-- <path d="M502,280c-6,-60,9,-59,16,-66q14,-12,14,-26L532,188c8,10,3,29,2,32s-8,15,-13,22s-16,11,-19,38z" fill="blue" fill-opacity=".5" /> -->
+        <!-- <path d="M502,280c-6,-60,9,-59,16,-66q14,-12,14,-26L532,188c8,10,3,29,-11,54c-5,7,-16,11,-19,38z" fill="red" fill-opacity=".5" /> -->
+        <path d="M502,270c-6,-60,9,-59,16,-66q14,-12,14,-26c8,10,10,32,-11,54s-14,22,-19,38z" fill="gold" fill-opacity=".6" />
+      </g>
     </g>
-    <g id="antennas"></g>
+    <g id="body" class="body" fill-opacity="1">
+      <path d="M460,280c10,-40,70,-40,80,0s0,172,-40,172s-50,-132,-40,-172z" fill="currentColor" />
+    </g>
+    
     <g id="left-forewing"></g>
     <g id="left-hindwing"></g>
   </g>
