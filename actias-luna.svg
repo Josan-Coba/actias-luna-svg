@@ -36,32 +36,29 @@
       <line x1="500" y1="0" x2="500" y2="1000" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
       <line x1="0" y1="500" x2="1000" y2="500" stroke="currentColor" stroke-width="1" stroke-opacity=".3" />
     </g>
-  </defs>
-  <path d="M0 0h1000v1000H0V0z" fill="none" />
-  <path class="dark-bg" d="M0,0v1000h1000z" />
-  <path class="light-bg" d="M1000,1000v-1000h-1000z" />
-  <use xlink:href="#guidelines" color="RED" />
-  <g id="moth" class="moth">
     <g id="draft" fill-opacity="0.2" stroke-width="1" >
       <path d="M500,200l400,80l-400,560l-400,-560z" stroke="olive" fill="lime" />
-      <path d="M500,280l300,-64l100,64l-170,170z" stroke="magenta" fill="darkmagenta" />
+      <!-- <path d="M500,280l300,-64l100,64l-170,170z" stroke="magenta" fill="darkmagenta" /> -->
       <path d="M500,280l64,0l112,192l-40,56l-120,0l-16,120l40,120l-40,40z" stroke="magenta" fill="darkmagenta" />
       <circle cx="580" cy="472" r="20" stroke="goldenrod" fill="gold" />
       <ellipse cx="692" cy="296" rx="16" ry="28" stroke="goldenrod" fill="gold" />
       <!-- <path d="M460,260h80v192h-80z" stroke="ghostwhite" fill="black" /> -->
       <!-- <path d="M500,260l24,-72" stroke="goldenrod" fill="gold" stroke-width="4" stroke-opacity=".6" /> -->
     </g>
+  </defs>
+  <path d="M0 0h1000v1000H0V0z" fill="none" />
+  <path class="dark-bg" d="M0,0v1000h1000z" />
+  <path class="light-bg" d="M1000,1000v-1000h-1000z" />
+  <use xlink:href="#guidelines" color="RED" />
+  <g id="moth" class="">
+    <!-- <use xlink:href="#draft" /> -->
     <g id="antennas">
       <g id="left-antenna">
-        <path d="M500,270q0,-80,-60,-80c20,4,60,6,56,80" fill="black" />
-        <path d="M498,270c6,-80,-10,-86,-60,-80c35,15,28,20,42,30s14,20,18,50" stroke="none" fill="gold" fill-opacity=".6" />
+        <path d="M500,270q0,-80,-60,-80c20,4,60,6,56,80z" fill="black" />
+        <path d="M498,270c6,-80,-10,-86,-60,-80c35,15,28,20,42,30s14,20,18,50z" stroke="none" fill="gold" fill-opacity=".6" />
       </g>
       <g id="right-antenna">
-        <!-- <path d="M500,280c0,-20,6,-41,20,-57s10,-30,12,-35c1,14,0,22,-10,36s-16,20,-18,56" fill="magenta" /> -->
-        <!-- <path d="M502,280c-6,-60,9,-59,16,-66s7,-6,10,-13s3,-11,4,-13c8,10,3,29,2,32s-8,15,-13,22s-16,11,-19,38z" fill="blue" fill-opacity=".5" /> -->
-        <path d="M500,270c5,-35,7,-40,20,-57s12,-28,12,-35c3,8,0,22,-10,36s-16,20,-18,56" fill="black" />
-        <!-- <path d="M502,280c-6,-60,9,-59,16,-66q14,-12,14,-26L532,188c8,10,3,29,2,32s-8,15,-13,22s-16,11,-19,38z" fill="blue" fill-opacity=".5" /> -->
-        <!-- <path d="M502,280c-6,-60,9,-59,16,-66q14,-12,14,-26L532,188c8,10,3,29,-11,54c-5,7,-16,11,-19,38z" fill="red" fill-opacity=".5" /> -->
+        <path d="M500,270c5,-35,7,-40,20,-57s12,-28,12,-35c3,8,0,22,-10,36s-16,20,-18,56z" fill="black" />
         <path d="M502,270c-6,-60,9,-59,16,-66q14,-12,14,-26c8,10,10,32,-11,54s-14,22,-19,38z" fill="gold" fill-opacity=".6" />
       </g>
     </g>
@@ -69,7 +66,45 @@
       <path d="M460,280c10,-40,70,-40,80,0s0,172,-40,172s-50,-132,-40,-172z" fill="currentColor" />
     </g>
     
+    <g id="right-forewing">
+      <path d="M880,235c-64.843,-39.061,-204.773,-48.145,-376.607,46.587c24.047,37.846,94.834,121.444,185.612,153.075c76.202,34.966,117.569,-63.527,132.092,-82.161c14.522,-18.635,123.743,-78.44,58.903,-117.501z" fill-opacity=".3" fill="lime" stroke="limegreen" />
+      <path d="M500,280l377,-47l-59,118l-132,82z" stroke="black" />
+      <path d="M500,280c172,-95,312,-86,377,-47s-45,99,-59,118s-52,115,-132,82s-162,-115,-186,-153z" stroke="black" fill="magenta" fill-opacity=".4" />
+    </g>
     <g id="left-forewing"></g>
+    <g id="right-hindwing">
+      <!-- <path d="M564,280c-8.46,-2.614,-32.798,-5.49,-62.472,3.921l27.332,521.522l23.427,-11.764l11.713,-15.684c-2.603,-10.457,-8.59,-32.154,-11.713,-35.291c-3.905,-3.922,-31.236,-70.582,-17.571,-109.794c1.953,-35.945,20.694,-105.873,80.042,-98.031l48.806,-9.803c14.968,-3.921,44.512,-12.548,42.95,-15.685c0,0,-3.905,-23.527,17.57,-29.409c10.412,-1.307,-7.028,-43.133,-160.084,-199.982z" fill-opacity=".3" fill="lime" stroke="limegreen"  /> -->
+      <path d="M500,280
+               c30,-9,54,-7,62,-4
+               c153,157,181,194,160,200
+               c-21,6,-18,27,-18,29
+               c1,3,-28,12,-43,16
+               l-49,10
+               c-59,-8,-78,62,-80,98
+               c-14,39,13,107,18,110
+               s9,25,12,35
+               l-12,16
+               l-23,12
+               l-27,-52z
+              " fill-opacity=".3" fill="lime" stroke="limegreen" />
+      <path d="M500,280
+               c30,-9,54,-7,62,-4
+               s144,80,165,195
+               c1,6,-11,6,-17,27
+               c-2,7,-2,7,-16,8
+               s-23,13,-27,21
+               s-1,12,-53,7
+               s-89,72,-79,101
+               c-17,14,1,94,15,104
+               s22,27,18,34
+               q-14,-2,-15,11
+               q-11,-1,-14,16
+               c-3,18,-22,48,-18,-52
+               s-21,-469,-21,-469
+               z
+              " stroke="blue" fill-opacity=".8" />
+    </g>
     <g id="left-hindwing"></g>
+    <use xlink:href="#draft" />
   </g>
 </svg>
