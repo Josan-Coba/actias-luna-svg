@@ -166,49 +166,67 @@
     <path
       id="forewing-shape"
       d="M530,280
-             C700,190,840,200,900,230
-             S860,330,830,370
-             S760,470,680,430
-             S550,370,520,310
-             Z"
+         C700,190,840,200,900,230
+         C920,240,950,255,950,270
+         C950,285,942,300,928,314
+         C914,328,892,334,874,346
+         C856,358,820,384,810,390
+         S760,434,740,430
+         S690,430,666,430
+         S572,372,542,342
+         C532,332,520,310,530,280
+         Z"
     />
-    <clipPath id="forewings-and-body-clip">
+    <clipPath id="forewing-shape-clip">
       <use href="#forewing-shape" />
-      <use href="#body-shape" />
-      <use href="#forewing-shape" transform="scale(-1,1) translate(-1000,0)" />
     </clipPath>
     <path
-      id="upper-rim-shape"
-      d="M500,262
-             C513,262,513,267,530,260
-             C700,190,840,200,900,230
-             C770,200,636,244,650,250
-             S670,274,670,286
-             S664,310,656,310
-             S644,302,642,298
-             S632,276,650,270
-             S630,240,550,290
-             C534,300,520,292,500,292
-             C480,292,466,300,450,290
-             C370,240,332,264,350,270
-             S360,294,358,298
-             S352,310,344,310
-             S330,298,330,286
-             S336,256,350,250
-             S230,200,100,230
-             C160,200,300,190,470,260
-             C487,267,487,262,500,262
-             Z"
+      id="upper-rim-half-shape"
+      d="M555.26875,250.0925
+        C713.8,191.05,843,201.5,900,230
+        C770,200,636,244,650,250
+        S670,274,670,286
+        S664,310,656,310
+        S644,302,642,298
+        S632,276,650,270
+        S630,240,550,290
+        C526.5,294.75,500,262,555.26875,250.0925
+        Z"
+    />
+    <path
+      id="forewing-side-rim"
+      d="M950,270
+         C950,285,945,303,931,317
+         C917,331,894.6,333,876.6,349
+         C858.6,365,822,387.4,812,393.4
+         S760,434,740,430
+         C760,434,797.4,391.7,807,386
+         C814,380,852.6,358,870.6,342
+         C888.6,326,910.4,324.4,924.4,310.4
+         C938.4,296.4,950,285,950,270
+         Z"
+    />
+    <path
+      id="hindwing-rim"
+      d="M740,500
+         C735,510,660,550,600,540
+         S540,590,540,620
+         S550,670,550,700
+         C540,650,534,620,536,590
+         S550,528,600,534
+         S676,534,740,500
+         Z"
     />
     <path
       id="forewing-brow-shape"
-      d="M550,290
-             C534,300,520,292,500,292
-             S466,300,450,290
-             L470,260
-             C487,267,487,262,500,262
-             S513,267,530,260
-             Z"
+      d="M500,262
+         C513,262,513,267,530,260
+         C547,253,570,280,550,290
+         C534,300,520,292,500,292
+         C480,292,466,300,450,290
+         C430,280,453,253,470,260
+         C487,267,487,262,500,262
+         Z"
     />
     <filter
       id="moon-blur"
@@ -244,34 +262,16 @@
         <feMergeNode />
       </feMerge>
     </filter>
-    <filter id="hindwing-rim-blur">
-      <feGaussianBlur
-        in="SourceGraphic"
-        stdDeviation="3"
-        result="strong-blur"
-      />
-      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="weak-blur" />
-      <feFlood flood-color="#eedd7c" />
-      <feComposite in2="weak-blur" operator="in" />
-      <feMerge result="blurred-rim">
-        <feMergeNode />
-        <feMergeNode />
-        <feMergeNode />
-        <feMergeNode in="strong-blur" />
-        <feMergeNode in="strong-blur" />
-        <feMergeNode in="strong-blur" />
-      </feMerge>
-      <feImage href="#hindwing-shape" x="0" y="0" width="100%" height="100%" />
-      <feComposite in="blurred-rim" operator="in" />
-      <feComposite in="SourceGraphic" />
+    <filter id="thin-blur" x="-50%" width="200%" y="-50%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
     </filter>
-    <filter id="forewing-side-rim-blur">
+    <filter id="wing-rim-blur">
       <feGaussianBlur
         in="SourceGraphic"
         stdDeviation="3"
         result="strong-blur"
       />
-      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="weak-blur" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="weak-blur" />
       <feFlood flood-color="#eedd7c" />
       <feComposite in2="weak-blur" operator="in" />
       <feMerge result="blurred-rim">
@@ -652,18 +652,13 @@
         stroke-opacity=".4"
         stroke-dasharray="352 350 85 54 500"
       />
-      <path
-        d="M740,500
-               C735,510,660,550,600,540
-               S540,590,540,620
-               S550,670,550,700
-               C540,650,534,620,536,590
-               S550,528,600,534
-               S676,534,740,500
-               Z"
+      <use
+        href="#hindwing-rim"
         fill="url(#wing-rim-color)"
-        filter="url(#hindwing-rim-blur)"
+        filter="url(#wing-rim-blur)"
+        clip-path="url(#hindwing-shape-clip)"
       />
+      <use href="#hindwing-rim" fill="url(#wing-rim-color)" />
       <g
         id="hindwingeye-right"
         filter="url(#wingeye-iris-blur)"
@@ -713,38 +708,86 @@
     <g id="left-hindwing">
       <use href="#right-hindwing" transform="scale(-1,1) translate(-1000,0)" />
     </g>
-    <!--  style="transform-origin: 50% 50%; transform: rotateY(60deg)" -->
-    <g id="right-forewing">
-      <use
-        href="#forewing-shape"
-        fill="url(#wing-fill-color)"
-        stroke="none"
-        stroke-opacity=".4"
-        stroke-width="3"
-        stroke-dasharray="1 386 76 176 310 1"
+    <!--  style="transform-origin: 50% 50%; transform: rotateY(60deg)" fill-opacity=".1" stroke="fuchsia" -->
+    <g id="right-forewing" transform="rotate(0,542,274)">
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        values="
+        0,542,274;
+        40,542,274;
+        0,542,274
+        "
+        fill="freeze"
+        additive="sum"
+        dur="0s"
+        repeatCount="indefinite"
       />
-      <path
-        d="M900,294
-               C890,314,845,350,830,370
-               S810,402,780,426
-               C810,390,830,350,900,294
-               Z"
+      <use href="#forewing-shape" fill="url(#wing-fill-color)" />
+      <use
+        href="#forewing-side-rim"
         fill="url(#wing-rim-color)"
-        filter="url(#forewing-side-rim-blur)"
-        clip-path="url(#forewings-and-body-clip)"
+        filter="url(#wing-rim-blur)"
+        clip-path="url(#forewing-shape-clip)"
       />
-    </g>
-    <g id="left-forewing">
-      <use href="#right-forewing" transform="scale(-1,1) translate(-1000,0)" />
-    </g>
-    <g id="upper-rim">
+      <use href="#forewing-side-rim" fill="url(#wing-rim-color)" />
+      <g display="none">
+      <circle cx="807" cy="386" r="2" fill="pink" stroke="cyan" />
+      <circle cx="870.6" cy="342" r="2" fill="fuchsia" stroke="cyan" />
+      <circle cx="908" cy="322" r="2" fill="green" stroke="cyan" />
+      <circle cx="908" cy="322" r="2" fill="green" stroke="cyan" />
+      <circle cx="924.4" cy="310.4" r="2" fill="blue" stroke="cyan" />
+      <circle cx="940" cy="298" r="2" fill="green" stroke="cyan" />
+      <circle cx="530" cy="280" r="2" fill="black" />
+      <circle cx="840" cy="200" r="2" fill="green" />
+      <circle cx="900" cy="230" r="2" fill="red" />
+      <circle cx="920" cy="240" r="2" fill="green" />
+      <circle cx="950" cy="255" r="2" fill="green" />
+      <circle cx="950" cy="270" r="2" fill="red" />
+      <circle cx="950" cy="285" r="2" fill="green" />
+      <circle cx="942" cy="300" r="2" fill="green" />
+      <circle cx="928" cy="314" r="2" fill="blue" />
+      <circle cx="914" cy="328" r="2" fill="green" stroke="lime" />
+      <circle cx="892" cy="330" r="2" fill="green" />
+      <circle cx="874" cy="346" r="2" fill="fuchsia" />
+      <circle cx="856" cy="358" r="2" fill="green" />
+      <circle cx="820" cy="384" r="2" fill="green" />
+      <circle cx="810" cy="390" r="2" fill="pink" />
+      <circle cx="800" cy="396" r="2" fill="blue" stroke="green" />
+      <circle cx="760" cy="434" r="2" fill="green" />
+      <circle cx="740" cy="430" r="2" fill="pink" />
+      <circle cx="720" cy="426" r="2" fill="blue" stroke="green" />
+      <circle cx="690" cy="430" r="2" fill="green" />
+      <circle cx="666" cy="430" r="2" fill="yellow" />
+      <circle cx="630" cy="430" r="2" fill="blue" stroke="green" />
+      <circle cx="572" cy="372" r="2" fill="green" />
+      <circle cx="542" cy="342" r="2" fill="cyan" />
+      <circle cx="532" cy="332" r="2" fill="green" />
+      </g>
+      <!-- <use
+        href="#forewing-shape"
+        fill="none"
+        stroke="#b2e775"
+        stroke-opacity="1"
+        stroke-width="4"
+        clip-path="url(#forewing-shape)"
+      /> -->
       <use
-        href="#upper-rim-shape"
+        href="#upper-rim-half-shape"
         fill="url(#wing-rim-color)"
         filter="url(#forewing-upper-rim-blur)"
-        clip-path="url(#forewings-and-body-clip)"
+        clip-path="url(#forewing-shape-clip)"
       />
-      <use href="#upper-rim-shape" fill="url(#wing-rim-color)" />
+      <use href="#upper-rim-half-shape" fill="url(#wing-rim-color)" />
+      
+      <!-- <circle cx="530" cy="260" r="3" fill="red" stroke="cyan" />
+      <circle cx="550" cy="290" r="3" fill="yellow" />
+      <circle cx="526.5" cy="294.75" r="3" fill="red" />
+      <circle cx="528.25" cy="277.375" r="3" fill="cyan" />
+      <circle cx="580.05" cy="241.34" r="3" fill="blue" />
+      <circle cx="555.26875" cy="250.0925" r="3" fill="purple" />
+      <circle cx="542" cy="274" r="3" fill="lime" /> -->
+      <!-- <circle cx="550" cy="266" r="3" fill="yellow" /> -->
       <g id="forewingeye-right">
         <path
           fill="url(#wingeye-sclera-fading)"
@@ -792,10 +835,16 @@
           />
         </g>
       </g>
+    </g>
+    <g id="left-forewing">
+      <use href="#right-forewing" transform="scale(-1,1) translate(-1000,0)" />
+    </g>
+    <g id="forewing-brow">
       <use
-        href="#forewingeye-right"
-        id="forewingeye-left"
-        transform="scale(-1,1) translate(-1000,0)"
+        href="#forewing-brow-shape"
+        fill="url(#wing-rim-color)"
+        filter="url(#forewing-upper-rim-blur)"
+        fill-opacity="1"
       />
     </g>
   </g>
