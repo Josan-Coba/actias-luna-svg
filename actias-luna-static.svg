@@ -5,78 +5,6 @@
   width="1000"
 >
   <defs>
-    <g id="guidelines">
-      <path
-        d="M0,0h1000v1000H0V0z M80,80v840h840V80H80"
-        fill="currentColor"
-        fill-opacity="0.2"
-      />
-      <circle
-        cx="500"
-        cy="500"
-        r="420"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-opacity=".4"
-      />
-      <circle
-        cx="500"
-        cy="500"
-        r="500"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-opacity=".4"
-      />
-      <rect
-        x="125"
-        y="125"
-        width="750"
-        height="750"
-        rx="80"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-opacity=".6"
-      />
-      <line
-        x1="0"
-        y1="0"
-        x2="1000"
-        y2="1000"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-opacity=".3"
-      />
-      <line
-        x1="1000"
-        y1="0"
-        x2="0"
-        y2="1000"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-opacity=".3"
-      />
-      <line
-        x1="500"
-        y1="0"
-        x2="500"
-        y2="1000"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-opacity=".3"
-      />
-      <line
-        x1="0"
-        y1="500"
-        x2="1000"
-        y2="500"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-opacity=".3"
-      />
-    </g>
     <linearGradient id="dark-bg-color">
       <stop stop-color="#050922" stop-opacity="1" />
     </linearGradient>
@@ -107,6 +35,10 @@
       <stop offset="0%" stop-color="limegreen" stop-opacity=".7" />
       <stop offset="0%" stop-color="#32cd78" stop-opacity=".7" />
       <stop offset="0%" stop-color="#6ad57c" stop-opacity=".85" />
+    </linearGradient>
+    <linearGradient id="tail-shadow-color" x1="0%" y1="100%" x2="42%" y2="0%">
+      <stop offset="40%" stop-color="#6ad57c" stop-opacity=".80" />
+      <stop offset="100%" stop-color="#112b07" stop-opacity=".6" />
     </linearGradient>
     <linearGradient id="wing-rim-color">
       <stop stop-color="#630453" stop-opacity="1" />
@@ -146,23 +78,33 @@
     </clipPath>
     <path
       id="hindwing-shape"
-      d="M530,280
-             C560,270,570,260,620,300
-             S740,430,750,450
-             S758,466,750,480
-             S745,490,740,500
-             S660,550,600,540
-             S540,590,540,620
-             S550,670,550,700
-             C550,740,570,760,570,780
-             C510,740,500,740,510,670
-             S505,500,505,420
-             C505,340,530,280,530,280
-             Z"
+      d="M542,274
+         C634,321,698,378,738,431
+         C751.844,449.344,745,449,737,463
+         C729,477,732,473,728,483
+         C728,488,708,505,684,519
+         S630,540,600,540
+         C546,540,540,590,540,620
+         S550,670,550,700
+         C550,740,580,760,570,780
+         C528,740,514,730,510,670
+         C507,628,512,600,508,550
+         S498,460,499,410
+         S509,333,516,316
+         S531,283,542,274
+         Z"
     />
     <clipPath id="hindwing-shape-clip">
       <use href="#hindwing-shape" />
     </clipPath>
+    <path
+      id="hindwing-tail-shape"
+      d="M550,700
+         C550,740,580,760,570,780
+         S540,816,530,810
+         S520,790,530,770
+         C540,750,550,730,550,700"
+    />
     <path
       id="forewing-shape"
       d="M530,280
@@ -183,38 +125,37 @@
     <path
       id="upper-rim-half-shape"
       d="M555.26875,250.0925
-         C713.8,191.05,843,201.5,900,230
-         C770,200,636,244,650,250
-         S670,274,670,286
-         S664,310,656,310
-         S644,302,642,298
-         S632,276,650,270
-         S630,240,550,290
-         C526.5,294.75,500,262,555.26875,250.0925
-         Z"
+        C713.8,191.05,843,201.5,900,230
+        C770,200,636,244,650,250
+        S670,274,670,286
+        S664,310,656,310
+        S644,302,642,298
+        S632,276,650,270
+        S630,240,550,290
+        C526.5,294.75,500,262,555.26875,250.0925
+        Z"
     />
     <path
       id="forewing-side-rim"
       d="M950,270
          C950,285,945,303,931,317
-         C917,331,894.6,333,876.6,349
-         C858.6,365,822,387.4,812,393.4
-         S760,434,740,430
-         C760,434,797.4,391.7,807,386
-         C814,380,852.6,358,870.6,342
-         C888.6,326,910.4,324.4,924.4,310.4
-         C938.4,296.4,950,285,950,270
+         S895,338,877,348
+         S822,384,794,402
+         C802,390,848,358,871,344
+         S910,326,924,312
+         S950,285,950,270
          Z"
     />
     <path
       id="hindwing-rim"
-      d="M740,500
-         C735,510,660,550,600,540
-         S540,590,540,620
-         S550,670,550,700
-         C540,650,534,620,536,590
-         S550,528,600,534
-         S676,534,740,500
+      d="M706,505
+         C670,536,630,542,600,542
+         S558,559,553,568
+         S542,590,543,624
+         S555,670,550,700
+         C539,650,534,610,538,590
+         S554,536,600,536
+         S660,528,706,505
          Z"
     />
     <path
@@ -320,27 +261,9 @@
       </feMerge>
     </filter>
   </defs>
-  <!-- <path d="M0 0h1000v1000H0V0z" fill="none" /> -->
-  <!-- <path d="M0,0v1000h1000z"
-        fill="url(#dark-bg-color)" />
-  <path d="M1000,1000v-1000h-1000z"
-        fill="url(#light-bg-color)" /> -->
   <path d="M0,0v1000h1000V0z" fill="url(#night-sky-color)" />
-  <!-- GUIDELINES -->
-  <!-- <use href="#guidelines" color="RED" /> -->
-  <!-- <g id="moon" transform="rotate(-25, 500, 500)" filter="url(#moon-blur)"> -->
+  <circle cx="500" cy="500" r="800" fill="url(#night-sky-color)" />
   <g id="moon" transform="rotate(-25, 500, 500)" filter="url(#moon-blur)">
-    <!--
-      Cuarto Menguante: Left=Shown, Right=Hidden, Hiding=Closed, Filling=Closed
-      | Hiding->Opening
-      Luna Nueva: Left=Hidden, Right=Shown, Hiding=Opened, Filling=Closed
-      | Hiding->Closing
-      Cuarto Creciente: Left=Hidden, Right=Shown, Hiding=Closed, Filling=Closed
-      | Filling->Opening
-      Luna Llena: Left=Shown, Right=Hidden, Hiding=Closed, Filling=Opened
-      | Filling->Closing
-     -->
-    <circle cx="500" cy="500" r="800" fill="url(#night-sky-color)" />
     <circle
       id="moon-glow"
       cx="500"
@@ -349,245 +272,29 @@
       fill="url(#moon-color)"
       filter="url(#moon-glow-blur)"
       transform="translate(150,0) scale(0.7,1)"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="500 0"
-        to="0 0"
-        dur="6s"
-        fill="freeze"
-        begin="moonHidingOpeningAnim.begin"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3178937883755 0.5 0.635787576751 1"
-      />
-      <animateTransform
-        id="moonGlowOpeningAnim"
-        attributeName="transform"
-        type="scale"
-        from="0 1"
-        to="1 1"
-        dur="6s"
-        fill="freeze"
-        begin="moonHidingOpeningAnim.begin"
-        additive="sum"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3178937883755 0.5 0.635787576751 1"
-      />
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="0 0"
-        to="500 0"
-        dur="6s"
-        repeatCount="1"
-        fill="freeze"
-        begin="moonHidingClosingAnim.begin"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.364212423249 0 0.6821062116245 0.5"
-      />
-      <animateTransform
-        id="moonGlowClosingAnim"
-        attributeName="transform"
-        type="scale"
-        from="1 1"
-        to="0 1"
-        dur="6s"
-        fill="freeze"
-        additive="sum"
-        begin="moonHidingClosingAnim.begin"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.364212423249 0 0.6821062116245 0.5"
-      />
-    </circle>
+    />
     <circle cx="500" cy="500" r="375" fill="url(#dark-moon-color)" />
     <path
       id="moonLeftHalf"
       d="M500 875A350 350 0 1 1 500 125"
       fill="url(#moon-color)"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="500 0"
-        to="0 0"
-        dur="6s"
-        fill="freeze"
-        begin="moonHidingClosingAnim.end"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3178937883755 0.5 0.635787576751 1"
-      />
-      <animateTransform
-        id="moonLeftHalfOpeningAnim"
-        attributeName="transform"
-        type="scale"
-        from="0 1"
-        to="1 1"
-        dur="6s"
-        fill="freeze"
-        begin="moonHidingClosingAnim.end"
-        additive="sum"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3178937883755 0.5 0.635787576751 1"
-      />
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="0 0"
-        to="500 0"
-        dur="6s"
-        repeatCount="1"
-        fill="freeze"
-        begin="moonHidingClosingAnim.begin"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3 0 0.5 0.5"
-      />
-      <animateTransform
-        id="moonLeftHalfClosingAnim"
-        attributeName="transform"
-        type="scale"
-        from="1 1"
-        to="0 1"
-        dur="6s"
-        fill="freeze"
-        additive="sum"
-        begin="moonHidingClosingAnim.begin"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3 0 0.5 0.5"
-      />
-    </path>
+    />
     <path
       id="moonRightHalf"
       d="M499 125.001A350 350 0 1 1 499 874.999"
       fill="url(#moon-color)"
       transform="translate(500,0) scale(0,1)"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="499 0"
-        to="0 0"
-        dur="6s"
-        fill="freeze"
-        begin="moonHidingOpeningAnim.begin"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.5 0.5 0.7 1"
-      />
-      <animateTransform
-        id="moonRightHalfOpeningAnim"
-        attributeName="transform"
-        type="scale"
-        from="0 1"
-        to="1 1"
-        dur="6s"
-        fill="freeze"
-        begin="moonHidingOpeningAnim.begin"
-        additive="sum"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.5 0.5 0.7 1"
-      />
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="0 0"
-        to="499 0"
-        dur="6s"
-        repeatCount="1"
-        fill="freeze"
-        begin="moonLeftHalfOpeningAnim.end"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.364212423249 0 0.6821062116245 0.5"
-      />
-      <animateTransform
-        id="moonRightHalfClosingAnim"
-        attributeName="transform"
-        type="scale"
-        from="1 1"
-        to="0 1"
-        dur="6s"
-        fill="freeze"
-        additive="sum"
-        begin="moonLeftHalfOpeningAnim.end"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.364212423249 0 0.6821062116245 0.5"
-      />
-    </path>
+    />
     <circle
-      id="moonHidingLayer"
+      id="moon-hiding-layer"
       cx="500"
       cy="500"
       r="375"
       fill="url(#dark-moon-color)"
       transform="translate(150,0) scale(0.7,1)"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="500 0"
-        to="0 0"
-        dur="6s"
-        fill="freeze"
-        begin="moonRightHalfClosingAnim.end"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3178937883755 0.5 0.635787576751 1"
-      />
-      <animateTransform
-        id="moonHidingOpeningAnim"
-        attributeName="transform"
-        type="scale"
-        from="0 1"
-        to="1 1"
-        dur="6s"
-        fill="freeze"
-        begin="moonRightHalfClosingAnim.end"
-        additive="sum"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.3178937883755 0.5 0.635787576751 1"
-      />
-      <animateTransform
-        attributeName="transform"
-        type="translate"
-        from="0 0"
-        to="500 0"
-        dur="6s"
-        repeatCount="1"
-        fill="freeze"
-        begin="moonHidingOpeningAnim.end"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.364212423249 0 0.6821062116245 0.5"
-      />
-      <animateTransform
-        id="moonHidingClosingAnim"
-        attributeName="transform"
-        type="scale"
-        from="1 1"
-        to="0 1"
-        dur="6s"
-        fill="freeze"
-        additive="sum"
-        begin="moonHidingOpeningAnim.end"
-        calcMode="spline"
-        keyTimes="0;1"
-        keySplines="0.364212423249 0 0.6821062116245 0.5"
-      />
-    </circle>
+    />
   </g>
-  <g id="moth" transform="rotate(-45,500,500) translate(0,80)">
+  <g id="moth" transform="rotate(-45,500,500) translate(0,100)">
     <g id="antennas">
       <g id="left-antenna">
         <path
@@ -615,7 +322,7 @@
       </g>
     </g>
     <g id="body" filter="url(#moth-shadow-filter)">
-      <use href="#body-shape" fill="url(#body-color)" fill-opacity="1" />
+      <use href="#body-shape" fill="url(#body-color)" />
       <path
         d="M470,260
                C487,267,487,262,500,262
@@ -629,29 +336,10 @@
         clip-path="url(#body-shape-clip)"
       />
     </g>
-    <g id="right-hindwing" transform="rotate(-00,550,290)">
-      <path
-        id="windwing-tail"
-        d="M550,700
-               C550,730,530,740,520,760
-               S510,800,530,810
-               S570,800,570,780
-               S550,740,550,700
-               Z"
-        fill="url(#wing-fill-color)"
-        stroke="none"
-        stroke-width="3"
-        stroke-opacity=".4"
-        stroke-dasharray="0 56 129 80"
-      />
-      <use
-        href="#hindwing-shape"
-        fill="url(#wing-fill-color)"
-        stroke=""
-        stroke-width="3"
-        stroke-opacity=".4"
-        stroke-dasharray="352 350 85 54 500"
-      />
+    <g id="right-hindwing" transform="rotate(0,542,274)">
+      <use href="#hindwing-tail-shape" fill="url(#tail-shadow-color)" />
+      <use href="#hindwing-shape" fill="url(#wing-fill-color)" />
+      
       <use
         href="#hindwing-rim"
         fill="url(#wing-rim-color)"
@@ -659,6 +347,7 @@
         clip-path="url(#hindwing-shape-clip)"
       />
       <use href="#hindwing-rim" fill="url(#wing-rim-color)" />
+      
       <g
         id="hindwingeye-right"
         filter="url(#wingeye-iris-blur)"
@@ -708,10 +397,9 @@
     <g id="left-hindwing">
       <use href="#right-hindwing" transform="scale(-1,1) translate(-1000,0)" />
     </g>
-    <!--  style="transform-origin: 50% 50%; transform: rotateY(60deg)" -->
+    <!-- rotate(16,542,274) translate(12,-6) -->
     <g id="right-forewing" transform="rotate(0,542,274)">
       <use href="#forewing-shape" fill="url(#wing-fill-color)" />
-      
       <use
         href="#forewing-side-rim"
         fill="url(#wing-rim-color)"
@@ -719,15 +407,15 @@
         clip-path="url(#forewing-shape-clip)"
       />
       <use href="#forewing-side-rim" fill="url(#wing-rim-color)" />
-      
+
       <use
         href="#upper-rim-half-shape"
         fill="url(#wing-rim-color)"
         filter="url(#forewing-upper-rim-blur)"
-        clip-path="url(#forewings-and-body-clip)"
+        clip-path="url(#forewing-shape-clip)"
       />
       <use href="#upper-rim-half-shape" fill="url(#wing-rim-color)" />
-      
+
       <g id="forewingeye-right">
         <path
           fill="url(#wingeye-sclera-fading)"
