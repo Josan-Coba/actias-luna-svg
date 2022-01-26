@@ -260,6 +260,20 @@
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
+    <path id="flight-route-descent" d="M472,472L350,350" />
+    <path id="flight-route-ascent" d="M650,650,L472,472" />
+    <path
+      id="flight-route-round"
+      d="
+        M350,350
+        C250,250,100,100,150,350
+        S100,800,300,800
+        S600,700,500,500
+        S400,200,500,150
+        S750,100,800,200
+        S800,400,850,650
+        S750,750,650,650"
+    />
   </defs>
   <path d="M0,0v1000h1000V0z" fill="url(#night-sky-color)" />
   <circle cx="500" cy="500" r="800" fill="url(#night-sky-color)" />
@@ -510,7 +524,128 @@
       />
     </circle>
   </g>
+  
+  <!-- rotate(-45,500,500) translate(0,140) -->
   <g id="moth" transform="rotate(-45,500,500) translate(0,140)">
+    <animateTransform
+      id="flightReset"
+      attributeName="transform"
+      type="rotate"
+      fill="freeze"
+      begin="rightWingFlapLong.begin + 2s"
+      dur=".01s"
+      values="-90"
+    />
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      additive="sum"
+      fill="freeze"
+      begin="flightReset.begin"
+      dur=".01s"
+      values="-500 -320"
+    />
+    <animateMotion
+      id="flightDescent"
+      dur="6s"
+      begin="flightReset.begin"
+      repeatCount="1"
+      fill="freeze"
+      rotate="auto-reverse"
+    >
+      <mpath xlink:href="#flight-route-descent" />
+    </animateMotion>
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      fill="freeze"
+      additive="sum"
+      begin="flightDescent.begin"
+      dur="6s"
+      repeatCount="1"
+      values="0 0; 0 64; 100 120; 375 268.8; 375 240;"
+      keyTimes="0; .2; .4; .8; 1"
+      keySplines="
+        .36,0,.68,.5;
+        0 0 1 1;
+        .32,.5,.64,1;
+        0 0 1 1;
+      "
+      calcMode="spline"
+    />
+    <animateTransform
+      attributeName="transform"
+      type="scale"
+      fill="freeze"
+      additive="sum"
+      begin="flightDescent.begin"
+      dur="6s"
+      repeatCount="1"
+      values="1 1; 1 .8; .8 .625; .25 .16; .25 .25;"
+      keyTimes="0; .2; .4; .8; 1"
+      keySplines="
+        .36,0,.68,.5;
+        0 0 1 1;
+        .32,.5,.64,1;
+        0 0 1 1;
+      "
+      calcMode="spline"
+    />
+    <animateMotion
+      id="flightRoute"
+      dur="22s"
+      begin="flightDescent.end"
+      fill="freeze"
+      rotate="auto-reverse"
+    >
+      <mpath xlink:href="#flight-route-round" />
+    </animateMotion>
+    <animateMotion
+      id="flightAscent"
+      dur="6s"
+      begin="flightRoute.end"
+      repeatCount="1"
+      fill="freeze"
+      rotate="auto-reverse"
+    >
+      <mpath xlink:href="#flight-route-ascent" />
+    </animateMotion>
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      fill="freeze"
+      additive="sum"
+      begin="flightAscent.begin"
+      dur="6s"
+      repeatCount="1"
+      values="0 0; 0 115.2; -1100 -480; -1500 -704; -1500 -960;"
+      keyTimes="0; .2; .6; .8; 1"
+      keySplines="
+        .32,.5,.64,1;
+        0,0,1,1;
+        .36,0,.68,.5;
+        0,0,1,1;
+      "
+      calcMode="spline"
+    />
+    <animateTransform
+      attributeName="transform"
+      type="scale"
+      fill="freeze"
+      additive="sum"
+      begin="flightAscent.begin"
+      dur="6s"
+      repeatCount="1"
+      values="1 1; 1 .64; 3.2 2.5; 4 3.2; 4 4;"
+      keyTimes="0; .2; .6; .8; 1"
+      keySplines="
+        .32,.5,.64,1;
+        0,0,1,1;
+        .36,0,.68,.5;
+        0,0,1,1;
+      "
+      calcMode="spline"
+    />
     <g id="antennas">
       <g id="left-antenna">
         <path
@@ -552,156 +687,447 @@
         clip-path="url(#body-shape-clip)"
       />
     </g>
-    <g id="right-hindwing" transform="rotate(-15,542,274)">
-      <use href="#hindwing-tail-shape" fill="url(#tail-shadow-color)" />
-      <use href="#hindwing-shape" fill="url(#wing-fill-color)" />
-      
-      <use
-        href="#hindwing-rim"
-        fill="url(#wing-rim-color)"
-        filter="url(#wing-rim-blur)"
-        clip-path="url(#hindwing-shape-clip)"
-      />
-      <use href="#hindwing-rim" fill="url(#wing-rim-color)" />
-      
-      <g
-        id="hindwingeye-right"
-        filter="url(#wingeye-iris-blur)"
-        transform="rotate(-10,590,440)"
-      >
-        <path
-          d="M573,430
-             A20,20,0,0,1,607,430
-             C615,450,608,460,590,460
-             S565,450,573,430
-             Z"
-          fill="url(#wingeye-sclera-color)"
-          stroke="url(#wing-rim-color)"
-          stroke-width="1"
+    <g id="moth-wings">
+      <!--
+        keySplines
+        (slow to fast)
+        closing= 0.364212423249 0 0.6821062116245 0.5
+          .36,0,.68,.5;
+        (fast to slow)
+        opening= 0.3178937883755 0.5 0.635787576751 1
+          .32,.5,.64,1;
+      -->
+      <g id="moth-right-wings">
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapLong.begin"
+          end="rightWingFlapLong.end"
+          dur="1s"
+          repeatCount="indefinite"
+          values="0 0; 364 0; 0 0"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
         />
-        <path
-          d="M573,430
-             A20,20,0,0,1,607,430
-             C596,426,584,426,573,430
-             Z"
-          fill="url(#wing-rim-color)"
+        <animateTransform
+          id="rightWingFlapLong"
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_2.end"
+          end="flightAscent.end + 2s"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1 1; .3 1; 1 1;"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
         />
-        <g filter="url(#wingeye-iris-blur)">
-          <path
-            d="M580,435
-               C582,434,586,433,590,433
-               S598,434,600,435
-               S602,438,602,440
-               S600,449,590,449
-               S578,442,578,440
-               S578,436,580,435
-               Z"
-            fill="url(#body-color)"
-          />
-          <path
-            d="M580,435
-               C582,434,586,433,590,433
-               S598,434,600,435
-               S598,439,590,439
-               S578,436,580,435
-               Z"
-            fill="url(#wingeye-pupil-color)"
-          />
-        </g>
-      </g>
-    </g>
-    <g id="left-hindwing">
-      <use href="#right-hindwing" transform="scale(-1,1) translate(-1000,0)" />
-    </g>
-    <!-- rotate(16,542,274) translate(12,-6) -->
-    <g id="right-forewing" transform="rotate(-20,542,274)">
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        values="
-        0,542,274;
-        40,542,274;
-        0,542,274
-        "
-        fill="freeze"
-        additive="sum"
-        dur="0s"
-        repeatCount="indefinite"
-      />
-      <use href="#forewing-shape" fill="url(#wing-fill-color)" />
-      <use
-        href="#forewing-side-rim"
-        fill="url(#wing-rim-color)"
-        filter="url(#wing-rim-blur)"
-        clip-path="url(#forewing-shape-clip)"
-      />
-      <use href="#forewing-side-rim" fill="url(#wing-rim-color)" />
-
-      <use
-        href="#upper-rim-half-shape"
-        fill="url(#wing-rim-color)"
-        filter="url(#forewing-upper-rim-blur)"
-        clip-path="url(#forewing-shape-clip)"
-      />
-      <use href="#upper-rim-half-shape" fill="url(#wing-rim-color)" />
-
-      <g id="forewingeye-right">
-        <path
-          fill="url(#wingeye-sclera-fading)"
-          d="M650,256
-             C664,256,670,274,670,286
-             L652,271
-             C663,266,652,260,650,256
-             Z"
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_1.begin"
+          end="rightWingFlapShort_1.end"
+          dur=".5s"
+          repeatCount="indefinite"
+          values="0 0; 104 0; 0 0;"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
         />
-        <path
-          id="forewingeye-shape-right"
-          d="M670,286
-             C670,298,664,310,656,310
-             S644,298,644,298
-             S635,278,652,271
-             S670,286,670,286
-             Z"
-          fill="url(#wingeye-sclera-color)"
+        <animateTransform
+          id="rightWingFlapShort_1"
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="0s; rightWingFlapLong.end + 1s;"
+          dur=".5s"
+          repeatCount="3"
+          values="1 1; .8 1; 1 1"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
         />
-        <g filter="url(#wingeye-iris-blur)" id="wingeye-iris">
-          <path
-            id="forewingeye-iris-right"
-            d="M656,273
-               C666,280,666,300,652,304
-               L652,299
-               C647,289,647,285,655,278
-               Z"
-            fill="url(#body-color)"
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_2.begin"
+          end="rightWingFlapShort_2.end"
+          dur=".5s"
+          repeatCount="indefinite"
+          values="0 0; 104 0; 0 0;"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          id="rightWingFlapShort_2"
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingWaitingShort.end"
+          dur=".5s"
+          repeatCount="3"
+          values="1 1; .8 1; 1 1"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingWaitingShort.begin"
+          end="rightWingWaitingShort.end"
+          dur="3s"
+          from="0 0"
+          to="0 0"
+        />
+        <animateTransform
+          id="rightWingWaitingShort"
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_1.end"
+          repeatCount="1"
+          dur="3s"
+          from="1 1"
+          to="1 1"
+        />
+        <g id="right-hindwing" transform="rotate(-15,542,274)">
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            fill="freeze"
+            additive="sum"
+            begin="rightWingFlapLong.begin"
+            end="rightWingFlapLong.end"
+            dur="1s"
+            repeatCount="indefinite"
+            values="
+              0,542,274;
+              10,542,274;
+              0,542,274;
+            "
+            keyTimes="0; .5; 1"
+            keySplines="
+              .36,0,.68,.5;
+              .32,.5,.64,1;
+            "
+            calcMode="spline"
           />
-          <path
-            id="forewingeye-pupil-right"
-            d="M652,299
-               C647,289,647,285,655,278
-               C660,287,660,292,652,299
-               Z"
-            fill="url(#wingeye-pupil-color)"
-          />
-          <path
-            id="forewingeye-pupil-shadow-right"
-            d="M652,299
-               C646,289,646,285,655,278
-               C648,285,650,294,652,299
-               Z"
+          <use href="#hindwing-tail-shape" fill="url(#tail-shadow-color)" />
+          <use href="#hindwing-shape" fill="url(#wing-fill-color)" />
+          
+          <use
+            href="#hindwing-rim"
             fill="url(#wing-rim-color)"
+            filter="url(#wing-rim-blur)"
+            clip-path="url(#hindwing-shape-clip)"
+          />
+          <use href="#hindwing-rim" fill="url(#wing-rim-color)" />
+          
+          <g
+            id="hindwingeye-right"
+            filter="url(#wingeye-iris-blur)"
+            transform="rotate(-10,590,440)"
+          >
+            <path
+              d="M573,430
+                A20,20,0,0,1,607,430
+                C615,450,608,460,590,460
+                S565,450,573,430
+                Z"
+              fill="url(#wingeye-sclera-color)"
+              stroke="url(#wing-rim-color)"
+              stroke-width="1"
+            />
+            <path
+              d="M573,430
+                A20,20,0,0,1,607,430
+                C596,426,584,426,573,430
+                Z"
+              fill="url(#wing-rim-color)"
+            />
+            <g filter="url(#wingeye-iris-blur)">
+              <path
+                d="M580,435
+                  C582,434,586,433,590,433
+                  S598,434,600,435
+                  S602,438,602,440
+                  S600,449,590,449
+                  S578,442,578,440
+                  S578,436,580,435
+                  Z"
+                fill="url(#body-color)"
+              />
+              <path
+                d="M580,435
+                  C582,434,586,433,590,433
+                  S598,434,600,435
+                  S598,439,590,439
+                  S578,436,580,435
+                  Z"
+                fill="url(#wingeye-pupil-color)"
+              />
+            </g>
+          </g>
+        </g>
+        <!-- rotate(16,542,274) translate(12,-6) -->
+        <g id="right-forewing" transform="rotate(-10,542,274)">
+          <use href="#forewing-shape" fill="url(#wing-fill-color)" />
+          <use
+            href="#forewing-side-rim"
+            fill="url(#wing-rim-color)"
+            filter="url(#wing-rim-blur)"
+            clip-path="url(#forewing-shape-clip)"
+          />
+          <use href="#forewing-side-rim" fill="url(#wing-rim-color)" />
+
+          <use
+            href="#upper-rim-half-shape"
+            fill="url(#wing-rim-color)"
+            filter="url(#forewing-upper-rim-blur)"
+            clip-path="url(#forewing-shape-clip)"
+          />
+          <use href="#upper-rim-half-shape" fill="url(#wing-rim-color)" />
+
+          <g id="forewingeye-right">
+            <path
+              fill="url(#wingeye-sclera-fading)"
+              d="M650,256
+                C664,256,670,274,670,286
+                L652,271
+                C663,266,652,260,650,256
+                Z"
+            />
+            <path
+              id="forewingeye-shape-right"
+              d="M670,286
+                C670,298,664,310,656,310
+                S644,298,644,298
+                S635,278,652,271
+                S670,286,670,286
+                Z"
+              fill="url(#wingeye-sclera-color)"
+            />
+            <g filter="url(#wingeye-iris-blur)" id="wingeye-iris">
+              <path
+                id="forewingeye-iris-right"
+                d="M656,273
+                  C666,280,666,300,652,304
+                  L652,299
+                  C647,289,647,285,655,278
+                  Z"
+                fill="url(#body-color)"
+              />
+              <path
+                id="forewingeye-pupil-right"
+                d="M652,299
+                  C647,289,647,285,655,278
+                  C660,287,660,292,652,299
+                  Z"
+                fill="url(#wingeye-pupil-color)"
+              />
+              <path
+                id="forewingeye-pupil-shadow-right"
+                d="M652,299
+                  C646,289,646,285,655,278
+                  C648,285,650,294,652,299
+                  Z"
+                fill="url(#wing-rim-color)"
+              />
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="moth-left-wings">
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_1.begin; rightWingFlapShort_2.begin;"
+          end="rightWingFlapShort_1.end; rightWingFlapShort_2.end;"
+          dur=".5s"
+          repeatCount="indefinite"
+          values="0 0; 96 0; 0 0;"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_1.begin; rightWingFlapShort_2.begin;"
+          end="rightWingFlapShort_1.end; rightWingFlapShort_2.end;"
+          dur=".5s"
+          repeatCount="indefinite"
+          values="1 1; .8 1; 1 1"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapLong.begin"
+          end="rightWingFlapLong.end"
+          dur="1s"
+          repeatCount="indefinite"
+          values="0 0; 336 0; 0 0"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapLong.begin"
+          end="rightWingFlapLong.end"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1 1; .3 1; 1 1;"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <g id="left-hindwing">
+          <use
+            href="#right-hindwing"
+            transform="scale(-1,1) translate(-1000,0)"
+          />
+        </g>
+        <g id="left-forewing">
+          <use
+            href="#right-forewing"
+            transform="scale(-1,1) translate(-1000,0)"
           />
         </g>
       </g>
-    </g>
-    <g id="left-forewing">
-      <use href="#right-forewing" transform="scale(-1,1) translate(-1000,0)" />
-    </g>
-    <g id="forewing-brow">
-      <use
-        href="#forewing-brow-shape"
-        fill="url(#wing-rim-color)"
-        filter="url(#forewing-upper-rim-blur)"
-      />
+      <g id="forewing-brow">
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_1.begin; rightWingFlapShort_2.begin;"
+          end="rightWingFlapShort_1.end; rightWingFlapShort_2.end;"
+          dur=".5s"
+          repeatCount="indefinite"
+          values="0 0; 100 0; 0 0;"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapShort_1.begin; rightWingFlapShort_2.begin;"
+          end="rightWingFlapShort_1.end; rightWingFlapShort_2.end;"
+          dur=".5s"
+          repeatCount="indefinite"
+          values="1 1; .8 1; 1 1"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapLong.begin"
+          end="rightWingFlapLong.end"
+          dur="1s"
+          repeatCount="indefinite"
+          values="0 0; 200 0; 0 0"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <animateTransform
+          attributeName="transform"
+          type="scale"
+          fill="freeze"
+          additive="sum"
+          begin="rightWingFlapLong.begin"
+          end="rightWingFlapLong.end"
+          dur="1s"
+          repeatCount="indefinite"
+          values="1 1; .6 1; 1 1;"
+          keyTimes="0; .5; 1"
+          keySplines="
+            .36,0,.68,.5;
+            .32,.5,.64,1;
+          "
+          calcMode="spline"
+        />
+        <use
+          href="#forewing-brow-shape"
+          fill="url(#wing-rim-color)"
+          filter="url(#forewing-upper-rim-blur)"
+        />
+      </g>
     </g>
   </g>
 </svg>
